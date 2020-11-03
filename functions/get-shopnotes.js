@@ -10,6 +10,7 @@ const query = require("./utils/query");
             name
             items {
                 data {
+                    _id,
                     name,
                     checked,
                     urgent,
