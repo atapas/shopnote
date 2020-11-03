@@ -1,0 +1,6 @@
+mutation {
+  deleteItem(id: "281163892268204551") {
+    _id
+    name
+  }
+}
