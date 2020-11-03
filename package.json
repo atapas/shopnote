@@ -1,0 +1,30 @@
+{
+  "name": "shopnote",
+  "version": "1.0.0",
+  "description": "This is a JAMstack application using Fauna, Netlify serverless and Gatsby.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atapas/shopnote.git"
+  },
+  "keywords": [
+    "Fauna",
+    "Netlify",
+    "Gatsby",
+    "JAMstack",
+    "react"
+  ],
+  "author": "Tapas Adhikary",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atapas/shopnote/issues"
+  },
+  "homepage": "https://github.com/atapas/shopnote#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "dotenv": "^8.2.0"
+  }
+}
