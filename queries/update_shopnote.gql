@@ -1,0 +1,9 @@
+mutation {
+  updateShopNote(id: "281163892083655175", data: {
+    name: "Shop List"
+   
+  }) {
+    _id
+    name
+  }
+}
