@@ -1,0 +1,8 @@
+query {
+	allShopNotes {
+  	data {
+    	_id
+		name
+  	}
+  }
+}  
