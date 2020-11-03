@@ -1,0 +1,20 @@
+mutation {
+  createShopNote(data: {
+    name: "Shopping Note 3rd Nov 2020"
+    items: {
+      create: [
+        { name: "Banana", checked: false }
+        { name: "Milk", checked: false }
+      ]
+    }
+  }) {
+    _id
+    name
+    items {
+      data {
+        name,
+		checked
+      }
+    }
+  }
+}

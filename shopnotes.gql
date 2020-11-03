@@ -1,0 +1,14 @@
+type ShopNote {
+  name: String!
+  items: [Item!] @relation
+}
+
+type Item {
+  name: String!
+  checked: Boolean!
+  note: ShopNote!
+}
+
+type Query {
+  allShopNotes: [ShopNote!]!
+}

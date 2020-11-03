@@ -1,0 +1,14 @@
+query {
+	allShopNotes {
+		data {
+			_id
+			name
+			items {
+				data {
+					name,
+					checked
+				}
+			}
+		}
+    }
+}  
