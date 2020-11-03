@@ -4,7 +4,8 @@
   "description": "This is a JAMstack application using Fauna, Netlify serverless and Gatsby.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "netlify dev --inspect"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/atapas/shopnote#readme",
   "dependencies": {
     "axios": "^0.21.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "netlify-cli": "^2.67.2"
   }
 }
