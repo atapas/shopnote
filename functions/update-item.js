@@ -28,6 +28,6 @@ exports.handler = async event => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ updateItem: data.updateItem })
+    body: JSON.stringify({ item: data.updateItem })
   };
 };
