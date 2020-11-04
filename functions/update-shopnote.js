@@ -1,4 +1,4 @@
-// update-testimonial.js
+// update-shopnote.js
 
 const query = require("./utils/query");
 
