@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug": "netlify dev --inspect"
+    "develop": "gatsby develop"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,9 @@
   "dependencies": {
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
-    "netlify-cli": "^2.67.2"
+    "gatsby": "^2.24.57",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "shortid": "^2.2.16"
   }
 }
