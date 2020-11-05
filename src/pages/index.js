@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { generate } from 'shortid';
 
+import './index.css'
+
 export default () => {    
   const [status, setStatus ] = useState('loading...');    
   const [shopnotes, setShopnotes] = useState(null);
@@ -19,27 +21,38 @@ export default () => {
     });
   }, [status]);
 
- 
+  const toggleCheck = event => {
+    console.log(event.target.value);
+  }
+
+  const toggleUrgent = event => {
+    console.log(event.target.value);
+  }
 
   return (
     <>
       {shopnotes && shopnotes.map((shopnote, index) => (
-        <div key={ generate() }>
-          <div className="shopnote">
-            <span>{ shopnote.name }</span>
-            <ul>
-                {shopnote.items.data && shopnote.items.data.map((item, index) => (
-                    <li key={generate()}>
-                        <span className="name">{ item.name }</span>
-                        {
+        <div className="shopnote" key={ generate() }>
+          <span>{ shopnote.name }</span>
+          <ul>
+              {shopnote.items.data && shopnote.items.data.map((item, index) => (
+                <li key={generate()} className="item-list">
+                  <input type="checkbox" className="item-list-cb" onChange={(e) => toggleCheck(e)} checked={item.checked} />
+                  <span className={item.urgent ? 'urgent' : 'normal'} onClick={(e) => toggleUrgent(e)}></span>
+                  <div className="item">
+                    <span className="name">{ item.name }</span>
+                    {
                             item.quantity ? 
-                            <span className="quantity">{'  '}{ item.quantity }</span> : null
-                        }
-                        
-                    </li>
-                ))}
-            </ul>
-          </div>
+                            <span className="quantity">{' ('}{ item.quantity }{')'}</span> : null
+                    }
+                  </div>
+                  <div className="actions">
+                    <a className="edit">e</a> {' '}
+                    <a className="delete">d</a>
+                  </div>
+                </li>
+              ))}
+          </ul>
         </div>
       ))}
     </>

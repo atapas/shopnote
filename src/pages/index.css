@@ -1,0 +1,41 @@
+
+.shopnote {
+    padding: 10px;
+}
+
+.item-list {
+    padding: 10px;
+    display: flex;
+}
+
+.item-list .actions {
+    margin: 0 0 0 5px;
+}
+
+.item-list .urgent {
+    float: left;
+    background-color: red;
+    margin: 0 5px 0 2px;
+    border-radius: 10px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.item-list .normal {
+    background-color: gray;
+    margin: 0 5px 0 2px;
+    border-radius: 10px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
