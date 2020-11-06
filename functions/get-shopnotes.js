@@ -8,6 +8,8 @@ const query = require("./utils/query");
         data {
             _id
             name
+            description
+            updatedAt
             items {
                 data {
                     _id,
