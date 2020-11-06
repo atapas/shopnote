@@ -1,6 +1,15 @@
 
+.main {
+    padding: 10px;
+}
+
 .shopnote {
     padding: 10px;
+}
+
+.item-container {
+    height: 200px;
+    overflow: auto;
 }
 
 .item-list {
