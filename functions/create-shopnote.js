@@ -3,10 +3,12 @@
 const query = require("./utils/query");
 
 const CREATE_SHOPNOTE = `
-  mutation($name: String!, $items: ShopNoteItemsRelation!){
-    createShopNote(data: {name: $name, items: $items}){
+  mutation($name: String!, $description: String!, $updatedAt: Time!, $items: ShopNoteItemsRelation!){
+    createShopNote(data: {name: $name, description: $description, updatedAt: $updatedAt, items: $items}){
         _id
         name
+        description
+        updatedAt
         items {
             data {
                 name,
