@@ -1,5 +1,7 @@
 type ShopNote {
   name: String!
+  description: String
+  updatedAt: Time
   items: [Item!] @relation
 }
 
