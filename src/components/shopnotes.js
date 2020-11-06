@@ -13,7 +13,7 @@ import Note from './note';
 const Shopnotes = props => {
 
     const shopnotes = props.data;
-    const brokenEdges  = _.chunk(shopnotes, 2);
+    const brokenEdges  = _.chunk(shopnotes, 3);
     console.log(shopnotes);
     console.log(brokenEdges);
 
