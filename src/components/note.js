@@ -7,7 +7,8 @@ import Item from './item';
 
 const Note = props => {
     const shopnote = props.data;
-    const [items, setItems] = useState(shopnote.items.data);
+    const sortedByChecked = shopnote.items.data.sort((a,b) => a.checked - b.checked);
+    const [items, setItems] = useState(sortedByChecked);
 
     const updateItemCheck = (id, type) => {
       const updatedItems = items.map(item => {
@@ -24,6 +25,10 @@ const Note = props => {
         }
         return item;
       });
+
+      if (type === 'checked') {
+        updatedItems.sort((a,b) => a.checked - b.checked);
+      }
       return updatedItems;
     }
 
