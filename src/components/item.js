@@ -11,13 +11,13 @@ const Item = props => {
         <input
           type="checkbox"
           className="item-list-cb"
-          onChange={() => props.toggleCheck(item['_id'])}
+          onChange={() => props.toggle(item['_id'], 'checked')}
           defaultChecked={item.checked || false}
         />
 
         <span
           className={item.urgent ? "urgent" : "normal"}
-          onClick={props.toggleUrgent || false}
+          onClick={() => props.toggle(item['_id'], 'urgent')}
         ></span>
         
         <div className={item.checked ? "item checked" : "item unchecked"}>
@@ -32,7 +32,7 @@ const Item = props => {
         </div>
         
         <div className="actions">
-          <a className="edit">e</a> <a className="delete">d</a>
+          <a className="add">A</a> <a className="delete">D</a>
         </div>
       </li>
     );

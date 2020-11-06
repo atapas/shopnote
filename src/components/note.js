@@ -9,15 +9,18 @@ const Note = props => {
     const shopnote = props.data;
     const [items, setItems] = useState(shopnote.items.data);
 
-    const updateItemCheck = id => {
+    const updateItemCheck = (id, type) => {
       const updatedItems = items.map(item => {
         // if this item has the same ID as the checked item
         if (id === item['_id']) {
           // use object spread to make a new object
           // whose `checked` prop has been inverted
-          
-          
-          return {...item, checked: !item.checked}
+          if (type === 'checked') {
+            return {...item, checked: !item.checked};
+          } else if (type === 'urgent') {
+            return {...item, urgent: !item.urgent}
+          }
+          return item;
         }
         return item;
       });
@@ -29,31 +32,36 @@ const Note = props => {
         // if this item has the same ID as the checked item
         return (id === item['_id']) 
       });
-
       return foundItem[0];
     }
     
-    const toggleCheck = async id => {
+    const toggle = async (id, type) => {
         console.log('toggle check', id);
         const foundItem = findItemToUpdate(id);
         if (foundItem) {
-          const payload = {...foundItem, 
-                            checked: !foundItem.checked, 
-                            id: foundItem['_id'],
-                            urgent: foundItem.urgent || false,
-                            quantity: foundItem.quantity || ""
-                          }
+          let payload = foundItem;
+          if (type === 'checked') {
+            payload = {...foundItem, 
+              checked: !foundItem.checked, 
+              id: foundItem['_id'],
+              urgent: foundItem.urgent || false,
+              quantity: foundItem.quantity || ""
+            }
+          } else if (type === 'urgent') {
+            payload = {...foundItem, 
+              checked: foundItem.checked || false, 
+              id: foundItem['_id'],
+              urgent: !foundItem.urgent,
+              quantity: foundItem.quantity || ""
+            }
+          }
+          
           const updated = await axios.post('/api/update-item', payload);
           console.log(updated);
-          setItems(updateItemCheck(updated.data.item['_id']));
+          setItems(updateItemCheck(updated.data.item['_id'], type));
         }
         
     }
-
-    const toggleUrgent = () => {
-        console.log('toggle urgent');
-    }
-    
 
     return (
       <Card bg="dark" text="white" className="mb-2">
@@ -66,9 +74,8 @@ const Note = props => {
                 <Item 
                   data={item} 
                   key= {generate()} 
-                  toggleCheck={toggleCheck}
-                  toggleUrgent = {toggleUrgent}
-                  />
+                  toggle={toggle}
+                />
               ))}
           </ul>
         </Card.Body>
