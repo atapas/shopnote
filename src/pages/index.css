@@ -17,6 +17,16 @@
     display: flex;
 }
 
+.item-list-cb {
+    height: 21px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+.item-list-cb:hover {
+    border-color: aqua;
+}
+
 .item-list .actions {
     margin: 0 0 0 5px;
 }
@@ -38,6 +48,10 @@
     height: 20px;
     width: 20px;
     cursor: pointer;
+}
+
+.item.checked{
+    text-decoration: line-through;
 }
 
 li {
