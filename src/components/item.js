@@ -26,7 +26,7 @@ const Item = props => {
             value={name} 
             className={item.checked ? "input checked" : "input unchecked"} 
             disabled={item.checked}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => setName(event.target.value || item.name)}
             onKeyUp={(event) => props.rename(event, item['_id'], name)} />
         </div>
         
