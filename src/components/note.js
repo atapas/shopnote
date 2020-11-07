@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import { generate } from 'shortid';
-
+import { ShoppingBag } from 'react-feather';
 import Item from './item';
 
 const Note = props => {
@@ -87,22 +87,67 @@ const Note = props => {
 
     const addItem = () => {
       console.log('Add Item');
+      
+
+      const newItem = {
+        _id: generate(),
+        name: "New Item",
+        checked: false,
+        urgent: false,
+        toSave: true
+      }
+      setItems([...items, newItem]);
+    }
+
+    const saveItem = async item => {
+      console.log('to save', item);
+
+      const payload = {
+        name: item.name,
+        urgent: false,
+        checked: false,
+        note: {
+          connect: shopnote["_id"]
+        }
+      }
+
+      const added = await axios.post('/api/add-item', payload);
+      console.log(added);
+      if (added.data && added.data.item) {
+        const remainingItems = softDelete(item['_id']);
+        setItems([...remainingItems, added.data.item]);
+      }
+
     }
 
     const deleteItem = async id => {
       const payload = {};
       payload['id'] = id;
       const deleted = await axios.post('/api/delete-item', payload);
-      if (deleted) {
+      if (deleted.data) {
         const remainingItems = items.filter(item => id !== item['_id']);
         setItems(remainingItems);
       }
     }
 
+    const cancelSave = id => {
+      setItems(softDelete(id));
+    }
+
+    const softDelete = id => {
+      const remainingItems = items.filter(item => id !== item['_id']);
+      return remainingItems;
+    }
+
     return (
       <Card bg="dark" text="white" className="mb-2">
         <Card.Body>
-          <Card.Title>{ shopnote.name }</Card.Title>
+          <Card.Title>
+            <span className="note-header-icon">
+              <ShoppingBag />
+            </span>
+            { shopnote.name }
+          </Card.Title>
           <Card.Text>{ shopnote.description }</Card.Text>
           <ul className="item-container">
             {items &&
@@ -114,6 +159,8 @@ const Note = props => {
                   rename={renameItem}
                   addItem={addItem}
                   deleteItem={deleteItem}
+                  saveItem={saveItem}
+                  cancelSave={cancelSave}
                 />
               ))}
           </ul>

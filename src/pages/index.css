@@ -7,6 +7,10 @@
     padding: 10px;
 }
 
+.note-header-icon {
+    margin-right: 5px;
+}
+
 .item-container {
     height: 200px;
     overflow: auto;
