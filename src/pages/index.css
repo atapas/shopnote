@@ -50,9 +50,17 @@
     cursor: pointer;
 }
 
-.item.checked{
+.item .input{
+    border: none;
+    background-color: #343a40!important;
+    border-bottom: 2px solid #ebebeb;
+    color: #FFFFFF;
+}
+
+.item .input.checked {
     text-decoration: line-through;
 }
+
 
 li {
     list-style: none;

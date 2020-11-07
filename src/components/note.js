@@ -10,7 +10,7 @@ const Note = props => {
     const sortedByChecked = shopnote.items.data.sort((a,b) => a.checked - b.checked);
     const [items, setItems] = useState(sortedByChecked);
 
-    const updateItemCheck = (id, type) => {
+    const updateItemCheck = (id, type, updatedName) => {
       const updatedItems = items.map(item => {
         // if this item has the same ID as the checked item
         if (id === item['_id']) {
@@ -20,6 +20,8 @@ const Note = props => {
             return {...item, checked: !item.checked};
           } else if (type === 'urgent') {
             return {...item, urgent: !item.urgent}
+          } else if (type === 'name') {
+            return {...item, name: updatedName}
           }
           return item;
         }
@@ -40,8 +42,8 @@ const Note = props => {
       return foundItem[0];
     }
     
-    const toggle = async (id, type) => {
-        console.log('toggle check', id);
+    const update = async (id, type, updatedName) => {
+        console.log('update check', id);
         const foundItem = findItemToUpdate(id);
         if (foundItem) {
           let payload = foundItem;
@@ -57,13 +59,30 @@ const Note = props => {
               id: foundItem['_id'],
               urgent: !foundItem.urgent
             }
+          } else if (type === 'name') {
+            payload = {...foundItem, 
+              checked: foundItem.checked, 
+              id: foundItem['_id'],
+              urgent: foundItem.urgent,
+              name: updatedName
+            }
           }
           
           const updated = await axios.post('/api/update-item', payload);
           console.log(updated);
-          setItems(updateItemCheck(updated.data.item['_id'], type));
+          setItems(updateItemCheck(updated.data.item['_id'], type, updatedName));
         }
         
+    }
+
+    const renameItem = (event, id, updatedName) => {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        console.log('rename triggered for', updatedName);
+        update(id, 'name', updatedName);
+      }
     }
 
     return (
@@ -77,7 +96,8 @@ const Note = props => {
                 <Item 
                   data={item} 
                   key= {generate()} 
-                  toggle={toggle}
+                  toggle={update}
+                  rename={renameItem}
                 />
               ))}
           </ul>

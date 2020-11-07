@@ -1,18 +1,17 @@
-import React from 'react';
-
-import { generate } from 'shortid';
+import React, { useState } from 'react';
 
 const Item = props => {
 
     const item = props.data;
+    const [name, setName] = useState(item.name);
 
     return (
-      <li key={generate()} className="item-list">
+      <li key={item['_id']} className="item-list">
         <input
           type="checkbox"
           className="item-list-cb"
           onChange={() => props.toggle(item['_id'], 'checked')}
-          defaultChecked={item.checked || false}
+          defaultChecked={item.checked || false} 
         />
 
         <span
@@ -20,8 +19,15 @@ const Item = props => {
           onClick={() => props.toggle(item['_id'], 'urgent')}
         ></span>
         
-        <div className={item.checked ? "item checked" : "item unchecked"}>
-          <span className="name">{item.name}</span>
+        <div className="item">
+          <input
+             
+            type="text" 
+            value={name} 
+            className={item.checked ? "input checked" : "input unchecked"} 
+            disabled={item.checked}
+            onChange={(event) => setName(event.target.value)}
+            onKeyUp={(event) => props.rename(event, item['_id'], name)} />
         </div>
         
         <div className="actions">
