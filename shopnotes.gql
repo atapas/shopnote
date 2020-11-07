@@ -7,7 +7,6 @@ type ShopNote {
 
 type Item {
   name: String!
-  quantity: String
   urgent: Boolean
   checked: Boolean
   note: ShopNote!

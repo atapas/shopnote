@@ -13,8 +13,7 @@ const CREATE_SHOPNOTE = `
             data {
                 name,
                 checked,
-                urgent,
-                quantity
+                urgent
             }
         }
     }
