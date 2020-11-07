@@ -5,8 +5,7 @@ query FindAShopNoteByID {
             data {
                 name,
                 checked,
-                urgent,
-                quantity
+                urgent
             }
         }
     }

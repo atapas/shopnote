@@ -22,13 +22,6 @@ const Item = props => {
         
         <div className={item.checked ? "item checked" : "item unchecked"}>
           <span className="name">{item.name}</span>
-          {item.quantity ? (
-            <span className="quantity">
-              {" ("}
-              {item.quantity}
-              {")"}
-            </span>
-          ) : null}
         </div>
         
         <div className="actions">

@@ -49,15 +49,13 @@ const Note = props => {
             payload = {...foundItem, 
               checked: !foundItem.checked, 
               id: foundItem['_id'],
-              urgent: foundItem.urgent || false,
-              quantity: foundItem.quantity || ""
+              urgent: foundItem.urgent || false
             }
           } else if (type === 'urgent') {
             payload = {...foundItem, 
               checked: foundItem.checked || false, 
               id: foundItem['_id'],
-              urgent: !foundItem.urgent,
-              quantity: foundItem.quantity || ""
+              urgent: !foundItem.urgent
             }
           }
           
