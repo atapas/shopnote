@@ -1,6 +1,10 @@
 
-.main {
-    padding: 10px;
+.main .header span {
+    font-size: 22px;
+}
+
+.main .header {
+    margin-bottom: 10px;
 }
 
 .shopnote {

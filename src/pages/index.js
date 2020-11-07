@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';    
 import axios from "axios";
 
+import Header from '../components/header';
 import Shopnotes from '../components/shopnotes';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,7 +27,7 @@ export default () => {
   
   return (
     <div className="main">
-      <h1>Shopnote - An easy way to manage your shopping needs</h1>
+      <Header />
       {
         status ? <Shopnotes data = { shopnotes } /> : <h1>Loading...</h1>
       }
