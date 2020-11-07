@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PlusCircle, XCircle } from 'react-feather';
 
 const Item = props => {
 
@@ -21,7 +22,6 @@ const Item = props => {
         
         <div className="item">
           <input
-             
             type="text" 
             value={name} 
             className={item.checked ? "input checked" : "input unchecked"} 
@@ -31,7 +31,13 @@ const Item = props => {
         </div>
         
         <div className="actions">
-          <a className="add">A</a> <a className="delete">D</a>
+          <span>
+            <PlusCircle className="add" onClick={props.addItem}></PlusCircle>
+          </span>
+
+          <span>
+            <XCircle className="delete" onClick={() => props.deleteItem(item['_id'])}></XCircle>
+          </span>
         </div>
       </li>
     );

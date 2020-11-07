@@ -31,6 +31,11 @@
     margin: 0 0 0 5px;
 }
 
+.item-list .actions span {
+    cursor: pointer;
+    margin-right: 2px;
+}
+
 .item-list .urgent {
     float: left;
     background-color: red;

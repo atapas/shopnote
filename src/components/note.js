@@ -85,6 +85,20 @@ const Note = props => {
       }
     }
 
+    const addItem = () => {
+      console.log('Add Item');
+    }
+
+    const deleteItem = async id => {
+      const payload = {};
+      payload['id'] = id;
+      const deleted = await axios.post('/api/delete-item', payload);
+      if (deleted) {
+        const remainingItems = items.filter(item => id !== item['_id']);
+        setItems(remainingItems);
+      }
+    }
+
     return (
       <Card bg="dark" text="white" className="mb-2">
         <Card.Body>
@@ -98,6 +112,8 @@ const Note = props => {
                   key= {generate()} 
                   toggle={update}
                   rename={renameItem}
+                  addItem={addItem}
+                  deleteItem={deleteItem}
                 />
               ))}
           </ul>
