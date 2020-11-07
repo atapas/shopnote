@@ -1,7 +1,6 @@
 mutation {
   createItem(data: {
     name: "Bed Cover"
-    quantity: "3"
     urgent: true
     checked: false
     note: {
@@ -10,7 +9,6 @@ mutation {
   }) {
     _id
     name
-    quantity
     urgent
     checked
     note {
