@@ -11,6 +11,11 @@
     margin-right: 5px;
 }
 
+.note-header-cancel {
+    float: right;
+    cursor: pointer;
+}
+
 .item-container {
     height: 200px;
     overflow: auto;
@@ -64,6 +69,7 @@
     background-color: #343a40!important;
     border-bottom: 2px solid #ebebeb;
     color: #FFFFFF;
+    width: 100px;
 }
 
 .item .input.checked {

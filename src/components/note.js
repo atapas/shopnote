@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import { generate } from 'shortid';
-import { ShoppingBag } from 'react-feather';
+import { ShoppingBag, X } from 'react-feather';
 import Item from './item';
 
 const Note = props => {
@@ -87,8 +87,6 @@ const Note = props => {
 
     const addItem = () => {
       console.log('Add Item');
-      
-
       const newItem = {
         _id: generate(),
         name: "New Item",
@@ -117,7 +115,6 @@ const Note = props => {
         const remainingItems = softDelete(item['_id']);
         setItems([...remainingItems, added.data.item]);
       }
-
     }
 
     const deleteItem = async id => {
@@ -147,6 +144,9 @@ const Note = props => {
               <ShoppingBag />
             </span>
             { shopnote.name }
+            <span className="note-header-cancel">
+              <X onClick={() => props.deleteNote(shopnote["_id"])}/>
+            </span>
           </Card.Title>
           <Card.Text>{ shopnote.description }</Card.Text>
           <ul className="item-container">

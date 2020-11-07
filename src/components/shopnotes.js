@@ -1,5 +1,5 @@
-import React from 'react';    
-
+import React, { useState, useEffect } from 'react';    
+import axios from "axios";
 import { generate } from 'shortid';
 
 import Container from 'react-bootstrap/Container';
@@ -12,10 +12,25 @@ import Note from './note';
 
 const Shopnotes = props => {
 
-    const shopnotes = props.data;
-    const brokenEdges  = _.chunk(shopnotes, 3);
-    console.log(shopnotes);
-    console.log(brokenEdges);
+    const [shopnotes, setShopnotes] = useState(props.data);
+    const [brokenEdges, setBrokenEdges]  = useState(_.chunk(shopnotes, 3));
+
+    useEffect(() => {
+        const updatedEdges = _.chunk(shopnotes, 3);
+        setBrokenEdges(updatedEdges);
+    }, [shopnotes]);
+
+    const deleteNote = async id => {
+        const payload = {};
+        payload['id'] = id;
+        const deleted = await axios.post('/api/delete-shopnote', payload);
+        const deletedNote = deleted.data.shopnote;
+        if (deletedNote) {
+          console.log('deleted', deletedNote);
+          const remainingNotes = shopnotes.filter(note => id !== note['_id']);
+          setShopnotes(remainingNotes);
+        }
+    }
 
     return (
       <Container>
@@ -26,7 +41,10 @@ const Shopnotes = props => {
                     {
                         edges.map((shopnote, findex) =>(
                             <Col sm key={generate()}>
-                                <Note data = { shopnote } key = {generate()} />
+                                <Note 
+                                    data = { shopnote } 
+                                    key = {generate()} 
+                                    deleteNote={deleteNote} />
                             </Col>
                         ))
                     }
