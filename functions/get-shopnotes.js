@@ -15,8 +15,7 @@ const query = require("./utils/query");
                     _id,
                     name,
                     checked,
-                    urgent,
-                    quantity
+                    urgent
                 }
             }
         }

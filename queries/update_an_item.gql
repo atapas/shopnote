@@ -1,7 +1,6 @@
 mutation {
   updateItem(id: "281163892268204551", data: {
     name: "Laddosss"
-    quantity: "5"
     urgent: false
     checked: false
   }) {
@@ -9,6 +8,5 @@ mutation {
     name
     checked
     urgent
-    quantity
   }
 }

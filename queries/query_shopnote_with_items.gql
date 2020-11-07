@@ -7,8 +7,7 @@ query {
 			data {
 				name,
 				checked,
-				urgent,
-				quantity
+				urgent
 			}
 		}
   	}

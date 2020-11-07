@@ -3,8 +3,8 @@ mutation {
     name: "Shopping List of Tapas"
     items: {
       create: [
-        { name: "Laddo", checked: false, urgent: true, quantity: "2 packates of 500gm" }
-        { name: "Milk", checked: false, urgent: false, quantity: "1 packate of 250gm" }
+        { name: "Laddo", checked: false, urgent: true }
+        { name: "Milk", checked: false, urgent: false }
       ]
     }
   }) {
@@ -14,8 +14,7 @@ mutation {
       data {
         name,
 		    checked,
-        urgent,
-        quantity
+        urgent
       }
     }
   }
