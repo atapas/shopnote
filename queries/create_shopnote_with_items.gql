@@ -1,19 +1,21 @@
 mutation {
   createShopNote(data: {
-    name: "Shopping List of Tapas"
+    name: "My Shopping List"
+    description: "This is my today's list to buy from Tom's shop"
     items: {
       create: [
-        { name: "Laddo", checked: false, urgent: true }
-        { name: "Milk", checked: false, urgent: false }
+        { name: "Butther - 1 pk", urgent: true }
+        { name: "Milk - 2 ltrs", urgent: false }
+        { name: "Meat - 1lb", urgent: false }
       ]
     }
   }) {
     _id
     name
+    description
     items {
       data {
         name,
-		    checked,
         urgent
       }
     }
