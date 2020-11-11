@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';    
 import axios from "axios";
-
 import Header from '../components/header';
 import Shopnotes from '../components/shopnotes';
 
@@ -8,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 
 export default () => {    
-  const [status, setStatus ] = useState(false);    
+  const [loading, setLoading ] = useState(false);    
   const [shopnotes, setShopnotes] = useState(null);
 
   useEffect(() => {
@@ -20,16 +19,16 @@ export default () => {
         return;
       }
       setShopnotes(result.data.shopnotes);
-      setStatus(true);
+      setLoading(true);
     });
-  }, [status]);
+  }, [loading]);
 
   
   return (
     <div className="main">
       <Header />
       {
-        status ? <Shopnotes data = { shopnotes } /> : <h1>Loading...</h1>
+        loading ? <Shopnotes data = { shopnotes } /> : <h1>Loading...</h1>
       }
     </div>
   );    

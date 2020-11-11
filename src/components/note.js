@@ -5,6 +5,8 @@ import { generate } from 'shortid';
 import { ShoppingBag, X } from 'react-feather';
 import Item from './item';
 
+import moment from 'moment';
+
 const Note = props => {
     const shopnote = props.data;
     const sortedByChecked = shopnote.items.data.sort((a,b) => a.checked - b.checked);
@@ -135,6 +137,7 @@ const Note = props => {
       const remainingItems = items.filter(item => id !== item['_id']);
       return remainingItems;
     }
+    
 
     return (
       <Card bg="dark" text="white" className="mb-2">
@@ -165,10 +168,15 @@ const Note = props => {
               ))}
           </ul>
         </Card.Body>
+        
+        {
+          shopnote.updatedAt &&
 
-        <Card.Footer>
-          <small className="text-muted">Last updated: { shopnote.updatedAt }</small>
-        </Card.Footer>
+          <Card.Footer>
+            <small className="text-muted">Created At: { moment(shopnote.updatedAt).format('YYYY-MM-DD h:mm:ss a') }</small>
+          </Card.Footer>
+        }
+        
       </Card>
     );
 }

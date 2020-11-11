@@ -31,6 +31,7 @@
     "dotenv": "^8.2.0",
     "gatsby": "^2.24.57",
     "lodash": "^4.17.20",
+    "moment": "^2.29.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.13.1",
