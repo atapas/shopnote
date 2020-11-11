@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';    
 import axios from "axios";
-import { generate } from 'shortid';
+import Header from '../components/header';
+import Shopnotes from '../components/shopnotes';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css'
 
 export default () => {    
-  const [status, setStatus ] = useState('loading...');    
+  const [loading, setLoading ] = useState(false);    
   const [shopnotes, setShopnotes] = useState(null);
 
   useEffect(() => {
-    if (status !== "loading...") return;
+    // if (status !== "loading...") return;
     axios("/api/get-shopnotes").then(result => {
       if (result.status !== 200) {
         console.error("Error loading shopnotes");
@@ -15,33 +19,17 @@ export default () => {
         return;
       }
       setShopnotes(result.data.shopnotes);
-      setStatus("loaded");
+      setLoading(true);
     });
-  }, [status]);
+  }, [loading]);
 
- 
-
+  
   return (
-    <>
-      {shopnotes && shopnotes.map((shopnote, index) => (
-        <div key={ generate() }>
-          <div className="shopnote">
-            <span>{ shopnote.name }</span>
-            <ul>
-                {shopnote.items.data && shopnote.items.data.map((item, index) => (
-                    <li key={generate()}>
-                        <span className="name">{ item.name }</span>
-                        {
-                            item.quantity ? 
-                            <span className="quantity">{'  '}{ item.quantity }</span> : null
-                        }
-                        
-                    </li>
-                ))}
-            </ul>
-          </div>
-        </div>
-      ))}
-    </>
+    <div className="main">
+      <Header />
+      {
+        loading ? <Shopnotes data = { shopnotes } /> : <h1>Loading...</h1>
+      }
+    </div>
   );    
 }

@@ -22,9 +22,9 @@ const CREATE_SHOPNOTE = `
 
 exports.handler = async event => {
   
-  const { name, items } = JSON.parse(event.body);
+  const { name, description, updatedAt, items } = JSON.parse(event.body);
   const { data, errors } = await query(
-    CREATE_SHOPNOTE, { name, items });
+    CREATE_SHOPNOTE, { name, description, updatedAt, items });
 
   if (errors) {
     return {
