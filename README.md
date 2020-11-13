@@ -1,5 +1,5 @@
 # shopnote
-`shopnote` is a JAMstack application helps in creating notes with shopping items. This application was built to showcase the JAMstack concept using `Fauna`, `Netlify Serverless Functions` and `GatsbyJS`. This is a test application and should be used only for the learning purpose.
+`shopnote` is a JAMstack application helps in creating notes with shopping items. This application was built to showcase the JAMstack concept using `Fauna`, `Netlify Serverless Functions` and `GatsbyJS`. This is a sample application and should be used only for the learning purpose.
 
 # How to run
 
