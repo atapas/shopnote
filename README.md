@@ -48,7 +48,7 @@ You should have the application launched @ http://localhost:8888
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9cdee8a1-a2de-4571-8733-760258100fae/deploy-status)](https://app.netlify.com/sites/shopnote/deploys)
 
 # Step-by-step approach
-A Step by Step guide to build `shopnote` kind of application is coming soon. Please stay tuned.
+[How to create a client-serverless Jamstack app using Netlify, Gatsby and Fauna](https://css-tricks.com/how-to-create-a-client-serverless-jamstack-app-using-netlify-gatsby-and-fauna/)
 
 # Important Links
 - [Netlify Functions](https://www.netlify.com/products/functions/)
