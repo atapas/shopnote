@@ -5,9 +5,12 @@ import { generate } from 'shortid';
 import { ShoppingBag, X } from 'react-feather';
 import Item from './item';
 
+import Alert from 'react-bootstrap/Alert';
+
 import moment from 'moment';
 
 const Note = props => {
+    const [show, setShow] = useState(false);
     const shopnote = props.data;
     const sortedByChecked = shopnote.items.data.sort((a,b) => a.checked - b.checked);
     const [items, setItems] = useState(sortedByChecked);
@@ -138,7 +141,18 @@ const Note = props => {
       return remainingItems;
     }
     
-
+    if (show) {
+      return (
+        <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+          <Alert.Heading>I get that! You are trying to delete a Note</Alert.Heading>
+          <p>
+            This is running from the demo branch where the delete capability is not
+            available. You can <a href="https://github.com/atapas/shopnote" target="_blank">checkout the master branch</a> and run the app locally
+            by following the instractions. You get to do all there!
+          </p>
+        </Alert>
+      );
+    }
     return (
       <Card bg="dark" text="white" className="mb-2">
         <Card.Body>
@@ -147,10 +161,9 @@ const Note = props => {
               <ShoppingBag />
             </span>
             { shopnote.name }
-            {/*<span className="note-header-cancel">
-              <X onClick={() => props.deleteNote(shopnote["_id"])}/>
+            <span className="note-header-cancel">
+              <X onClick={() => setShow(true)}/>
             </span>
-            */}
           </Card.Title>
           <Card.Text>{ shopnote.description }</Card.Text>
           <ul className="item-container">
