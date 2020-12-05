@@ -147,10 +147,10 @@ const Note = props => {
               <ShoppingBag />
             </span>
             { shopnote.name }
-            {/*<span className="note-header-cancel">
+            <span className="note-header-cancel">
               <X onClick={() => props.deleteNote(shopnote["_id"])}/>
             </span>
-            */}
+            
           </Card.Title>
           <Card.Text>{ shopnote.description }</Card.Text>
           <ul className="item-container">
